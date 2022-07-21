@@ -31,10 +31,28 @@ public class FP03FunctionalInterfaces2 {
         };
         System.out.println(randonIntegerSupplier.get());
 
-        //BiPredicate
-        //BiFunction
-        //BiConsumer
+//        BiPredicate<Integer, String> biPredicate = (number, str) -> number < 10 && str.length() > 5;
+        BiPredicate<Integer, String> biPredicate = (number, str) -> {
+            return number < 10 && str.length() > 5;
+        };
+        System.out.println(biPredicate.test(4, "amostaro")); // retorna TRUE or FALSE
 
+//        BiFunction<Integer, String, String> biFunction = (number, str) -> number + " " + str;
+        BiFunction<Integer, String, String> biFunction = (number, str) -> {
+            return number + " " + str;
+        };
+        System.out.println(biFunction.apply(5, "amostaro")); // retorna os argumentos
+
+        BiConsumer<Integer, String> biConsumer = (s1, s2) -> {
+            System.out.println(s1);
+            System.out.println(s2);
+        };
+        biConsumer.accept(6, "amostaro");
+
+
+
+
+        //IntBinaryOperator
         //IntPredicate
         //IntFunction
         //IntConsumer
@@ -42,7 +60,7 @@ public class FP03FunctionalInterfaces2 {
         //IntToDoubleFunction
         //IntToLongFunction
         //IntUnaryOperator
-        //IntBinaryOperator
+
 
         //Boolean, Long, Double, Float
 
