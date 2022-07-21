@@ -160,5 +160,34 @@ public class FP04CustomClass {
                 .filter(reviewScoreGreaterThan95Predicate)
                 .findAny());
         // Optional[Spring 20000 98]
+
+        System.out.println(coursesList.stream()
+                .filter(reviewScoreGreaterThan95Predicate)
+                .mapToInt(Course::getNoOfStudents)
+                .sum());
+        // 88000
+        System.out.println(coursesList.stream()
+                .filter(reviewScoreGreaterThan95Predicate)
+                .mapToInt(Course::getNoOfStudents)
+                .average());
+        // OptionalDouble[22000.0]
+        System.out.println(coursesList.stream()
+                .filter(reviewScoreGreaterThan95Predicate)
+                .mapToInt(Course::getNoOfStudents)
+                .count());
+        // 4
+        System.out.println(coursesList.stream()
+                .filter(reviewScoreGreaterThan95Predicate)
+                .mapToInt(Course::getNoOfStudents)
+                .max());
+        // OptionalInt[25000]
+        System.out.println(coursesList.stream()
+                .filter(reviewScoreGreaterThan95Predicate)
+                .mapToInt(Course::getNoOfStudents)
+                .min());
+        // OptionalInt[20000]
+
+
+
     }
 }
