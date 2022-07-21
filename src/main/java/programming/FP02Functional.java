@@ -15,11 +15,16 @@ public class FP02Functional {
     private static int addListStructured(List<Integer> numbers) {
 
         return numbers.stream()
-                .reduce(0, FP02Functional :: sum);
+//                .reduce(0, FP02Functional :: sum);
+//                .reduce(0, (a,b) -> a + b);
+                .reduce(0, Integer :: sum);
 
     }
 
     private static Integer sum(Integer a, Integer b) {
+        // a - aggregate
+        // b - next number
+        System.out.println(a + " " + b);
         return a + b;
     }
 }
