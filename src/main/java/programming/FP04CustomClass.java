@@ -3,6 +3,7 @@ package programming;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 class Course {
@@ -187,7 +188,36 @@ public class FP04CustomClass {
                 .min());
         // OptionalInt[20000]
 
-
+        System.out.println(coursesList.stream()
+                .collect(Collectors.groupingBy(Course::getCategory)));
+        // {
+        // Cloud=[AWS 21000 92, Azure 21000 99, Docker 20000 92, Kubernetes 20000 91],
+        // Fullstack=[Fullstack 14000 91],
+        // Microservices=[API 22000 97, Microservices 25000 96],
+        // Framework=[Spring 20000 98, Spring Boot 18000 95]
+        // }
+        System.out.println(coursesList.stream()
+                .collect(Collectors.groupingBy(Course::getCategory,
+                        Collectors.counting())));
+        // {Cloud=4, Fullstack=1, Microservices=2, Framework=2}
+        System.out.println(coursesList.stream()
+                .collect(Collectors.groupingBy(Course::getCategory,
+                        Collectors.maxBy(Comparator.comparing(Course::getReviewScore)))));
+        // {
+        // Cloud=Optional[Azure 21000 99],
+        // Fullstack=Optional[Fullstack 14000 91],
+        // Microservices=Optional[API 22000 97],
+        // Framework=Optional[Spring 20000 98]}
+        System.out.println(coursesList.stream()
+                .collect(Collectors.groupingBy(Course::getCategory,
+                        Collectors.mapping(Course::getName,
+                                Collectors.toList()))));
+        // {
+        // Cloud=[AWS, Azure, Docker, Kubernetes],
+        // Fullstack=[Fullstack],
+        // Microservices=[API, Microservices],
+        // Framework=[Spring, Spring Boot]
+        // }
 
     }
 }
