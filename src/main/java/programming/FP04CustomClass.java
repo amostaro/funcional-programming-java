@@ -102,6 +102,39 @@ public class FP04CustomClass {
                 .collect(Collectors.toList()));
         // [Microservices 25000 96, API 22000 97, Azure 21000 99, AWS 21000 92, Spring 20000 98, Docker 20000 92, Kubernetes 20000 91, Spring Boot 18000 95, Fullstack 14000 91]
 
+        System.out.println(coursesList.stream()
+                .sorted(comparingByNoOfStudentsAndReviewScore)
+                .limit(5) // pega os 5 primeiros
+                .collect(Collectors.toList()));
+
+        System.out.println(coursesList.stream()
+                .sorted(comparingByNoOfStudentsAndReviewScore)
+                .skip(3) // pula os 3 primeiros
+                .collect(Collectors.toList()));
+
+        System.out.println(coursesList.stream()
+                .sorted(comparingByNoOfStudentsAndReviewScore)
+                .skip(3)
+                .limit(5)
+                .collect(Collectors.toList()));
+
+        System.out.println(coursesList.stream()
+                .sorted(comparingByNoOfStudentsAndReviewScore)
+                .limit(5)
+                .skip(3)
+                .collect(Collectors.toList()));
+
+        System.out.println(coursesList);
+        // [Spring 20000 98, Spring Boot 18000 95, API 22000 97, Microservices 25000 96, Fullstack 14000 91, AWS 21000 92, Azure 21000 99, Docker 20000 92, Kubernetes 20000 91]
+        System.out.println(coursesList.stream()
+                .takeWhile(course -> course.getReviewScore()>=95)
+                .collect(Collectors.toList()));
+        // [Spring 20000 98, Spring Boot 18000 95, API 22000 97, Microservices 25000 96]
+        System.out.println(coursesList.stream()
+                .dropWhile(course -> course.getReviewScore()>=95)
+                .collect(Collectors.toList()));
+        // [Fullstack 14000 91, AWS 21000 92, Azure 21000 99, Docker 20000 92, Kubernetes 20000 91]
+
 
     }
 }
