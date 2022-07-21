@@ -49,8 +49,8 @@ public class FP03FunctionalInterfaces2 {
         };
         biConsumer.accept(6, "amostaro");
 
-
-
+        BinaryOperator<Integer> sumBinaryOperator2 = (x, y) -> x + y;
+        IntBinaryOperator intBinaryOperator = (x, y) -> x + y; // primitive operations
 
         //IntBinaryOperator
         //IntPredicate
